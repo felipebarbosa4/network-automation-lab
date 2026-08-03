@@ -1,0 +1,33 @@
+devices:
+  ott-pe-01:
+    hostname: ott-pe-01
+    role: pe
+    site: ottawa
+    management_ip: 192.0.2.11
+    router_id: 192.0.2.11
+    local_as: 64512
+    neighbors:
+      - address: 192.0.2.2
+        description: tor-pe-01
+        peer_as: 64513
+        family: inet-unicast
+        min_received_prefixes: 100
+      - address: 198.51.100.2
+        description: mtl-pe-01
+        peer_as: 64514
+        family: inet-unicast
+        min_received_prefixes: 50
+
+  tor-pe-01:
+    hostname: tor-pe-01
+    role: pe
+    site: toronto
+    management_ip: 192.0.2.21
+    router_id: 192.0.2.21
+    local_as: 64513
+    neighbors:
+      - address: 192.0.2.1
+        description: ott-pe-01
+        peer_as: 64512
+        family: inet-unicast
+        min_received_prefixes: 100
