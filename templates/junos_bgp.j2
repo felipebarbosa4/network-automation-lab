@@ -1,0 +1,22 @@
+system {
+    host-name {{ hostname }};
+}
+routing-options {
+    router-id {{ router_id }};
+    autonomous-system {{ local_as }};
+}
+protocols {
+    bgp {
+{% for neighbor in neighbors %}
+        group EBGP-{{ loop.index }} {
+            type external;
+            description "{{ neighbor.description }}";
+            family {{ neighbor.family.split('-')[0] }} {
+                unicast;
+            }
+            peer-as {{ neighbor.peer_as }};
+            neighbor {{ neighbor.address }};
+        }
+{% endfor %}
+    }
+}
