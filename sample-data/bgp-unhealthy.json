@@ -1,0 +1,17 @@
+{
+  "device": "ott-pe-01",
+  "neighbors": [
+    {
+      "address": "192.0.2.2",
+      "peer_as": 64513,
+      "state": "Active",
+      "received_prefixes": 0
+    },
+    {
+      "address": "198.51.100.2",
+      "peer_as": 64599,
+      "state": "Established",
+      "received_prefixes": 12
+    }
+  ]
+}
